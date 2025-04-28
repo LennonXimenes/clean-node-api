@@ -1,5 +1,7 @@
+import { iHttpRequest, iHttpResponse } from "../protocols/http";
+
 export class SignUpController {
-  handle(httpRequest: any): any {
+  handle(httpRequest: iHttpRequest): iHttpResponse {
     if (!httpRequest.body.name) {
       return {
         statusCode: 400,
