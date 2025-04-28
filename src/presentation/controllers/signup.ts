@@ -4,7 +4,12 @@ import { iHttpRequest, iHttpResponse } from "../protocols/http";
 
 export class SignUpController {
   handle(httpRequest: iHttpRequest): iHttpResponse {
-    const requiredFields = ["name", "email"];
+    const requiredFields = [
+      "name",
+      "email",
+      "password",
+      "passwordConfirmation",
+    ];
 
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {
