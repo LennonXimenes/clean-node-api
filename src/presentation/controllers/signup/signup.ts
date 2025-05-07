@@ -17,7 +17,7 @@ export class SignUpController implements iController {
     this.addAccount = addAccount;
   }
 
-  handle(httpRequest: iHttpRequest): iHttpResponse {
+  async handle(httpRequest: iHttpRequest): Promise<iHttpResponse> {
     try {
       const requiredFields = [
         "name",
@@ -41,7 +41,7 @@ export class SignUpController implements iController {
       if (!isValid) {
         return badRequest(new InvalidParamError("email"));
       }
-      const account = this.addAccount.add({
+      const account = await this.addAccount.add({
         name,
         email,
         password,
